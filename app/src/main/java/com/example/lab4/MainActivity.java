@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     int ADD_NEW_PART_INTENT_ID=8976;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.startButton).setOnClickListener(this);
     simpleList = (ListView) findViewById(R.id.simpleList);
     myAdapter = new MyAdapter(this, R.layout.list_view_items, fullworkout);
     simpleList.setAdapter(myAdapter);
@@ -55,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(requestCode==ADD_NEW_PART_INTENT_ID && resultCode== Activity.RESULT_OK) {
 
             WorkOutPart newPart=(WorkOutPart) data.getSerializableExtra("NEW_PART");
-            //TextView text =findViewById(R.id.testi);
-            //text.setText(newPart.getName());
+
+
             fullworkout.add(newPart);
             //myAdapter.notifyDataSetChanged();
 
@@ -64,7 +67,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onClick(View v) {
+        Collections.reverse(fullworkout);
+                 for(int i =0; i<fullworkout.size();i++) {
+                     String nimi = fullworkout.get(i).getName();
+                     int aika = fullworkout.get(i).getSeconds();
+                     String aika2 = Integer.valueOf(aika).toString();
+                     Intent intent =new Intent(this, WorkOutClock.class);
+                     intent.putExtra("NIMI",nimi);
+                     intent.putExtra("AIKA",aika2);
+                     startActivity(intent);
 
+                 }
     }
 }
 
