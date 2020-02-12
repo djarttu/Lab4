@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<WorkOutPart> fullworkout = new ArrayList<>();
     ListView simpleList;
     MyAdapter myAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             fullworkout.add(newPart);
-            //myAdapter.notifyDataSetChanged();
+            myAdapter.notifyDataSetChanged();
 
         }
     }

@@ -22,7 +22,7 @@ public class activity_createWorkout extends AppCompatActivity implements View.On
         findViewById(R.id.addButton).setOnClickListener(this);
         editor = findViewById(R.id.laji);
         editor2 = findViewById(R.id.time);
-       checkBox=findViewById(R.id.cb);
+        checkBox=findViewById(R.id.cb);
     }
 
     @Override
@@ -48,11 +48,12 @@ public class activity_createWorkout extends AppCompatActivity implements View.On
         if (checkBox.isChecked()) {
             Pause = true;
             editor.setEnabled(false);
-            editor.setText(null);
+            editor.setText("Pause");
         }
         else{
             Pause=false;
             editor.setEnabled(true);
+            editor.setText(null);
         }
 
 
